@@ -1,0 +1,162 @@
+{
+  "app": {
+    "project": "OnBoarding Challenge",
+    "github": "GitHub Repository"
+  },
+
+  "home": {
+    "hello": "Hello",
+    "welcome": "Welcome to your project management platform.",
+    "projects": "Projects managed by you:",
+    "no-projects": "You are not managing any projetcts at the moment...",
+    "tasks": "Your ongoing tasks:",
+    "no-tasks": "You don't have any ongoing tasks..."
+  },
+
+  "nav-menu": {
+    "app-name": "Project Management Platform",
+    "home": "Home",
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "logout": "Logout",
+    "register": "Register",
+    "delete-account": "Delete account"
+  },
+
+  "projects": {
+    "add": "Add new project",
+    "not-found": "No projects found",
+    "manager": "Manager",
+    "tasks": "Project tasks",
+    "delete": "Delete project",
+    "edit": "Edit project",
+    "no-tasks": "There are no tasks in this project..."
+  },
+
+  "tasks": {
+    "add": "Add task",
+    "state": "State",
+    "done": "Done",
+    "ongoing": "Ongoing",
+    "edit": "Edit task",
+    "delete": "Delete task",
+    "developer": "Assign a developer",
+    "all": "All",
+    "not-found": "No tasks associated",
+    "not-found-filter": "No tasks associated for the matching filter",
+    "search": "Search",
+    "no-matches": "No tasks match the search filter",
+    "done-mark": "Mark as done",
+    "ongoing-mark": "Mark as ongoing"
+  },
+
+  "no-description": "No description",
+
+  "button": {
+    "edit": "Edit",
+    "back": "Back",
+    "save": "Save",
+    "add": "Add",
+    "cancel": "Cancel",
+    "view": "View",
+    "delete-account": "Delete account"
+  },
+
+  "form": {
+    "login": "Login",
+    "username": "Username",
+    "enter-username": "Enter username",
+    "password": "Password",
+    "enter-password": "Enter password",
+    "remember-me": "Remember me",
+    "register": "Register",
+    "full-name": "Full name",
+    "enter-full-name": "Enter full name",
+    "email": "Email adddress",
+    "enter-email": "Enter email address",
+    "role": "Role",
+    "select-role": "Select a role",
+    "project-manager": "Project Manager",
+    "developer": "Developer",
+    "edit-user": "Edit user info",
+    "new-password": "New password",
+    "change-password": "Change password",
+    "budget": "Budget",
+    "enter-budget": "Enter project budget",
+    "name": "Name",
+    "enter-name": "Enter project name",
+    "description": "Description",
+    "enter-description": "Enter project description",
+    "deadline": "Deadline",
+    "guardian": "Guardian",
+    "project": "Project"
+  },
+
+  "validation": {
+    "required": {
+      "full-name": "Please enter your full name.",
+      "username": "Please your desired user name.",
+      "email": "Please enter your email address.",
+      "password": "Please enter your desired password.",
+      "role": "Please select a role.",
+      "new-password": "Please enter your desired new password.",
+      "name": "Please enter the project name.",
+      "budget": "Please enter the project budget.",
+      "task-name": "Please enter the task name.",
+      "guardian": "Please select a guardian for the task.",
+      "deadline": "Please enter the task deadline."
+    },
+    "min-length": {
+      "username": "Your user name must be at least 6",
+      "password": "Your password must be at least 8",
+      "new-password": "Your new password must be at least 8",
+      "name": "The project name must be at least 3",
+      "characters": " characters."
+    },
+    "email": "Please enter a valid email address.",
+    "password": "Your password must contain at least one lower and upper case letter, one number, and one special character.",
+    "new-password": "Your new password must contain at least one lower and upper case letter, one number, and one special character.",
+    "budget-min": "The project budget must be a positive value.",
+    "budget-max": "The project budget must be smaller.",
+    "deadline": "The task deadline must not be in the past."
+  },
+
+  "alert": {
+    "message": {
+      "login": "Logged in successfully",
+      "logout": "Logged out successfully",
+      "register": "User registered successfully",
+      "user-edit": "User info updated successfully",
+      "user-delete": "Account deleted successfully",
+      "project-add": "Project added successfully",
+      "project-edit": "Project updated successfully",
+      "project-delete": "Project deleted successfully",
+      "task-add": "Task added successfully",
+      "task-edit": "Task updated successfully",
+      "task-delete": "Task deleted successfully",
+      "task-state": "Task state updated"
+    },
+    "error": {
+      "internal-error": "An internal error occurred",
+      "wrong-credentials": "Wrong username and/or password",
+      "user-not-found": "User not found",
+      "task-not-found": "Task not found",
+      "project-not-found": "Project not found",
+      "could-not-register": "Could not register",
+      "could-not-change-password": "Could not change password",
+      "could-not-update-user": "Could not update user info",
+      "duplicate-email": "Email address already in use",
+      "duplicate-username": "User name already in use",
+      "invalid-fields": "Invalid field(s)",
+      "project-manager-deleted": "Current project manager no longer exists",
+      "expired-session": "Your session expired",
+      "forbidden": "You don't have permissions"
+    },
+    "confirm": {
+      "project-delete": "Are you sure you want to delete this project?",
+      "task-delete": "Are you sure you want to delete the task: ",
+      "project-manager-delete": "Are you sure you want to delete your account? (You will also delete all the projects you manage and it's tasks)",
+      "developer-delete": "Are you sure you want to delete your account? (You will also delete all the tasks associated with you)"
+    }
+  }
+}   

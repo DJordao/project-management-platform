@@ -1,0 +1,58 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow ">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="isAuthenticated ? ['/'] : ['login']">{{"nav-menu.app-name" | translate}}</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item dropdown language">
+            <a class="nav-link text-light dropdown-toggle" role="button" data-bs-toggle="dropdown">
+              <span class="fi fi-{{getCurrentLang().flag}} fis"></span> {{getCurrentLang().label}}
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" role="button" *ngFor="let lang of langs" (click)="switchLang(lang.code)">
+                <span class="fi fi-{{lang.flag}} fis"></span> {{lang.label}}
+              </a>
+            </div>
+          </li>
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }" *ngIf="isAuthenticated">
+            <a class="nav-link text-light hoverable" [routerLink]="['/']">{{"nav-menu.home" | translate}}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated && role === 'Project Manager'">
+            <a class="nav-link text-light" [routerLink]="['/projects']">{{'nav-menu.projects' | translate}}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated && role === 'Developer'">
+            <a class="nav-link text-light" [routerLink]="['/tasks']">{{'nav-menu.tasks' | translate}}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated">
+            <a class="nav-link text-light"  [routerLink]="['/users', getUserName()]">
+              <fa-icon [icon]="faUser"></fa-icon> {{getUserName()}}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!isAuthenticated">
+            <a class="nav-link text-light" [routerLink]="['/login']">{{'form.login' | translate}}</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="isAuthenticated">
+            <a class="nav-link text-light" [routerLink]="['/']" (click)="logout()">
+              <fa-icon [icon]="faSignOutAlt"></fa-icon>
+              {{'nav-menu.logout' | translate}}
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="!isAuthenticated" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" [routerLink]="['/register']">{{'nav-menu.register' | translate}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </header>

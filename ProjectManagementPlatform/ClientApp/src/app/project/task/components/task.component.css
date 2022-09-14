@@ -1,0 +1,64 @@
+#taskItem {
+  float: left;
+  margin: 10px;
+  width: 620px;
+  height: 420px;
+}
+
+.box-shadow {
+  box-shadow: 0 .5rem .75rem rgba(0, 0, 0, .05);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  background-color: rgba(27, 110, 194, 0.1);
+}
+
+.btn-primary {
+  color: #1b6ec2;
+  background-color: #fff;
+  border-color: #1861ac;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.btn-primary:active  {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+#done {
+  border-radius: 25px;
+  width: 160px;
+  height: 40px;
+}
+
+#ongoing {
+  border-radius: 25px;
+  width: 160px;
+  height: 40px;
+}
+
+#done:hover {
+  background-color: #DC3545;
+  border-color: #DC3545;
+}
+
+#ongoing:hover {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.paddingLeft {
+  padding-left:30px;
+}
+
+.margin {
+  margin: 10px;
+}

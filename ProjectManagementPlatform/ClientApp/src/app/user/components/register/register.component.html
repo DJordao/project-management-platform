@@ -1,0 +1,98 @@
+<div class="pt-4 offset-md-2">
+  <div class="mb-3">
+    <h3>{{'form.register' | translate}}</h3>
+  </div>
+  <div class="card col-md-10">
+    <div class="card-body">
+      <form (ngSubmit)="register()" [formGroup]="registerForm">
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label" for="fullName">{{'form.full-name' | translate}}</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="fullName" formControlName="fullName"
+                   placeholder="{{'form.enter-full-name' | translate}}"
+                  maxlength="64" (focus)="checkFullNameErrors(1000)" (keyup)="checkFullNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidFullName }">
+            <span class="invalid-feedback">
+              <span *ngIf="errorFullNameRequired">
+                {{'validation.required.full-name' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label" for="username">{{'form.username' | translate}}</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="username" formControlName="username"
+                   placeholder="{{'form.enter-username' | translate}}"
+                  maxlength="32" (focus)="checkUserNameErrors(1000)" (keyup)="checkUserNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidUserName }">
+            <span class="invalid-feedback">
+              <span *ngIf="errorUserNameRequired">
+                {{'validation.required.username' | translate}}
+              </span>
+              <span *ngIf="errorUserNameMinLength">
+                {{'validation.min-length.username' | translate}}{{'validation.min-length.characters' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label" for="email">{{'form.email' | translate}}</label>
+          <div class="col-md-6">
+            <input type="email" class="form-control" id="email" formControlName="email"
+                   placeholder="{{'form.enter-email' | translate}}" maxlength="32"
+                   (focus)="checkEmailErrors(1000)" (keyup)="checkEmailErrors()"
+                   [ngClass]="{'is-invalid': isInvalidEmail }">
+            <span class="invalid-feedback">
+              <span *ngIf="errorEmailRequired">
+                {{'validation.required.email' | translate}}
+              </span>
+              <span *ngIf="errorEmail">
+                {{'validation.email' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label" for="password">{{'form.password' | translate}}</label>
+          <div class="col-md-6">
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="{{'form.enter-password' | translate}}"
+                  maxlength="32" (focus)="checkPasswordErrors(1000)" (keyup)="checkPasswordErrors()"
+                   [ngClass]="{'is-invalid': isInvalidPassword }">
+            <span class="invalid-feedback">
+              <span *ngIf="errorPasswordRequired">
+                {{'validation.required.password' | translate}}
+              </span>
+              <span *ngIf="errorPasswordMinLength">
+                {{'validation.min-length.password' | translate}}{{'validation.min-length.characters' | translate}}
+              </span>
+              <span *ngIf="errorPasswordPattern">
+                {{'validation.password' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-md-3 col-form-label" for="role">{{'form.role' | translate}}</label>
+          <div class="col-md-6">
+            <select class="form-select form-control" id="role" formControlName="role"
+                    (focus)="checkRoleErrors(1000)" (change)="checkRoleErrors()"
+                   [ngClass]="{'is-invalid': isInvalidRole }">
+              <option disabled selected value="">{{'form.select-role' | translate}}</option>
+              <option value="developers">{{'form.developer' | translate}}</option>
+              <option value="projectManagers">{{'form.project-manager' | translate}}</option>
+            </select>
+            <span class="invalid-feedback">
+              <span *ngIf="errorRoleRequired">
+                {{'validation.required.role' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4 col-md-4 offset-md-4" [disabled]="registerForm.invalid">
+          <fa-icon [icon]="faAddressCard"></fa-icon> {{'form.register' | translate}}</button>
+      </form>
+    </div>
+  </div>
+
+</div>

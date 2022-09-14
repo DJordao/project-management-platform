@@ -1,0 +1,80 @@
+
+    <div>
+      <form (ngSubmit)="updateUser()" [formGroup]="userForm">
+        <div class="form-group">
+          <label class="col-form-label" for="fullName">{{'form.full-name' | translate}}</label>
+          <div>
+            <input type="text" class="form-control" id="fullName" formControlName="fullName" maxlength="64"
+                   (keyup)="checkFullNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidFullName }"/>
+            <span class="invalid-feedback">
+              <span *ngIf="errorFullNameRequired">
+                {{'validation.required.full-name' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="username">{{'form.username' | translate}}</label>
+          <div>
+            <input type="text" class="form-control" id="username" formControlName="username" maxlength="32"
+                   (keyup)="checkUserNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidUserName }" />
+            <span class="invalid-feedback">
+              <span *ngIf="errorUserNameRequired">
+                {{'validation.required.username' | translate}}
+              </span>
+              <span *ngIf="errorUserNameMinLength">
+                {{'validation.min-length.username' | translate}}{{'validation.min-length.characters' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="email">{{'form.email' | translate}}</label>
+          <div>
+            <input type="email" class="form-control" id="email" formControlName="email" maxlength="32"
+                   (keyup)="checkEmailErrors()"
+                   [ngClass]="{'is-invalid': isInvalidEmail }"/>
+            <span class="invalid-feedback">
+              <span *ngIf="errorEmailRequired">
+                {{'validation.required.email' | translate}}
+              </span>
+              <span *ngIf="errorEmail">
+                {{'validation.email' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="password">{{'form.new-password' | translate}}</label>
+          <div>
+            <input type="password" class="form-control" id="password" formControlName="password"
+                   placeholder="{{'form.change-password' | translate}}"
+                   maxlength="32" (keyup)="checkPasswordErrors()"
+                   [ngClass]="{'is-invalid': isInvalidPassword }">
+            <span class="invalid-feedback">
+              <span *ngIf="errorPasswordMinLength">
+                {{'validation.min-length.new-password' | translate}}{{'validation.min-length.characters' | translate}}
+              </span>
+              <span *ngIf="errorPasswordPattern">
+                {{'validation.new-password' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <hr />
+        <div class="form-group">
+          <div>
+            <button type="submit" class="btn btn-primary col-md-3" data-bs-toggle="modal" data-bs-target="#editUserModal"
+                    [disabled]="userForm.invalid">
+              <fa-icon [icon]="faSave"></fa-icon> {{'button.save' | translate}}</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editUserModal"
+                    (click)="reset()">
+            <fa-icon [icon]="faBan"></fa-icon>
+            {{'button.cancel' | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+

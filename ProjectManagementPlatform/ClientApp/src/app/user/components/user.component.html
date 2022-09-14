@@ -1,0 +1,63 @@
+<div class="offset-md-3 mt-4">
+  <div class="col-lg-8 card mb-4" *ngIf="user">
+    <div class="card-header">
+      <h5 class="card-title mb-0">{{user.userName}}</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">{{'form.full-name' | translate}}</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">{{user.fullName}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">{{'form.email' | translate}}</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">{{user.email}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">{{'form.role' | translate}}</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0" *ngIf="user.role == 'Project Manager'">{{'form.project-manager' | translate}}</p>
+          <p class="text-muted mb-0" *ngIf="user.role == 'Developer'">{{'form.developer' | translate}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary col-md-2" data-bs-toggle="modal" data-bs-target="#editUserModal">
+        <fa-icon [icon]="faEdit"></fa-icon>
+        {{'button.edit' | translate}}
+      </button>
+      <button class="btn btn-secondary" [routerLink]="'..'">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+        {{'button.back' | translate}}
+      </button>
+      <button id="confirmDelete" (click)="confirmDelete()" class="btn btn-danger col-md-4">
+        <fa-icon [icon]="faUserAltSlash"></fa-icon>
+        {{'button.delete-account' | translate}}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editUserModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editUserModal">{{'form.edit-user' | translate}}</h4>
+      </div>
+      <div class="modal-body">
+        <app-user-edit [(user)]="user"></app-user-edit>
+      </div>
+    </div>
+  </div>
+</div>

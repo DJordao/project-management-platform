@@ -1,0 +1,161 @@
+{
+  "app": {
+    "project": "Desafio de Integração",
+    "github": "Repositório GitHub"
+  },
+
+  "home": {
+    "hello": "Olá",
+    "welcome": "Bem-vindo(a) à sua plataforma de gestão de projetos.",
+    "projects": "Projetos geridos por si:",
+    "no-projects": "Não se encontra a gerir nenhum projeto de momento...",
+    "tasks": "As suas tarefas por fazer:",
+    "no-tasks": "Não possui nenhuma tarefa por fazer..."
+  },
+
+  "nav-menu": {
+    "app-name": "Plataforma de Gestão de Projetos",
+    "home": "Início",
+    "projects": "Projetos",
+    "tasks": "Tarefas",
+    "logout": "Terminar sessão",
+    "register": "Registo"
+  },
+
+  "projects": {
+    "add": "Adicionar novo projeto",
+    "not-found": "Não foram encontrados projetos",
+    "manager": "Gestor",
+    "tasks": "Tarefas do projeto",
+    "delete": "Apagar projeto",
+    "edit": "Editar projeto",
+    "no-tasks": "Não existe nenhuma tarefa neste projeto..."
+  },
+
+  "tasks": {
+    "add": "Adicionar tarefa",
+    "state": "Estado",
+    "done": "Concluída",
+    "ongoing": "Em progresso",
+    "edit": "Editar tarefa",
+    "delete": "Apagar tarefa",
+    "developer": "Associar um programador",
+    "all": "Todas",
+    "not-found": "Sem tarefas associadas",
+    "not-found-filter": "Sem tarefas associadas para o filtro selecionado",
+    "search": "Pesquisar",
+    "no-matches": "Não existem tarefas que correspondem à pesquisa",
+    "done-mark": "Marcar como concluída",
+    "ongoing-mark": "Marcar como em progresso"
+  },
+
+  "no-description": "Sem descrição",
+
+  "button": {
+    "edit": "Editar",
+    "back": "Voltar",
+    "save": "Guardar",
+    "add": "Adicionar",
+    "cancel": "Cancelar",
+    "view": "Ver",
+    "delete-account": "Apagar conta"
+  },
+
+  "form": {
+    "login": "Iniciar sessão",
+    "username": "Nome de utilizador",
+    "enter-username": "Inserir nome de utilizador",
+    "password": "Palavra-passe",
+    "enter-password": "Inserir palavra-passe",
+    "remember-me": "Manter sessão iniciada",
+    "register": "Registo",
+    "full-name": "Nome completo",
+    "enter-full-name": "Inserir nome completo",
+    "email": "Endereço de email",
+    "enter-email": "Inserir endereço de email",
+    "role": "Cargo",
+    "select-role": "Selecionar um cargo",
+    "project-manager": "Gestor de projeto",
+    "developer": "Programador",
+    "edit-user": "Editar dados de utilizador",
+    "new-password": "Nova palavra-passe",
+    "change-password": "Alterar palavra-passe",
+    "budget": "Orçamento",
+    "enter-budget": "Inserir orçamento do projeto",
+    "name": "Nome",
+    "enter-name": "Inserir nome do projeto",
+    "description": "Descrição",
+    "enter-description": "Inserir descrição do projeto",
+    "deadline": "Data limite",
+    "guardian": "Responsável",
+    "project": "Projeto"
+  },
+
+  "validation": {
+    "required": {
+      "full-name": "Por favor insira o seu nome completo.",
+      "username": "Por favor insira o seu nome de utilizador desejado.",
+      "email": "Por favor insira o seu endereço de email.",
+      "password": "Por favor insira a sua palavra-passe desejada.",
+      "role": "Por favor selecione um cargo.",
+      "new-password": "Por favor insira a sua palavra-passe nova desejada.",
+      "name": "Por favor insira o nome do projeto.",
+      "budget": "Por favor insira o orçamento do projeto.",
+      "task-name": "Por favor insira o nome da tarefa.",
+      "guardian": "Por favor selecione um responsável para a tarefa.",
+      "deadline": "Por favor insira a data limite da tarefa."
+    },
+    "min-length": {
+      "username": "O seu nome de utilizador deve conter pelo menos 6",
+      "password": "A sua palavra-apasse deve conter pelo menos 8",
+      "new-password": "A sua nova palavra-apasse deve conter pelo menos 8",
+      "name": "O nome do projeto deve conter pelo menos 3",
+      "characters": " caracteres."
+    },
+    "email": "Por favor insira um endereço de email válido.",
+    "password": "A sua palavra-passe deve conter pelo menos uma letra minúscula e maiúscula, um dígito e um caractere especial.",
+    "new-password": "A sua nova palavra-passe deve conter pelo menos uma letra minúscula e maiúscula, um dígito e um caractere especial.",
+    "budget-min": "O orçamento do projeto deve ser um valor positivo.",
+    "budget-max": "O orçamento do projeto deve ser menor.",
+    "deadline": "A data limite da tarefa não deve ser no passado."
+  },
+
+  "alert": {
+    "message": {
+      "login": "Sessão iniciada com sucesso",
+      "logout": "Sessão terminada com sucesso",
+      "register": "Utilizador registado com sucesso",
+      "user-edit": "Dados de utilizador atualizados com sucesso",
+      "user-delete": "Conta apagada com sucesso",
+      "project-add": "Projeto adicionado com sucesso",
+      "project-edit": "Projeto atualizado com sucesso",
+      "project-delete": "Projeto apagado com sucesso",
+      "task-add": "Tarefa adicionada com sucesso",
+      "task-edit": "Tarefa atualizada com sucesso",
+      "task-delete": "Tarefa apagada com sucesso",
+      "task-state": "Estado da tarefa atualizado"
+    },
+    "error": {
+      "internal-error": "Ocorreu um erro no servidor",
+      "wrong-credentials": "Nome de utilizador e/ou palavra-passe errados",
+      "user-not-found": "Utilizador não encontrado",
+      "task-not-found": "Tarefa não encontrada",
+      "project-not-found": "Projeto não encontrado",
+      "could-not-register": "Não foi possível fazer o resgisto",
+      "could-not-change-password": "Não foi possível alterar a sua palavra-passe",
+      "could-not-update-user": "Não foi possível atualizar os dados de utilizador",
+      "duplicate-email": "O endereço de email inserido já se encontra em uso",
+      "duplicate-username": "O nome de utilizador inserido já se encontra em uso",
+      "invalid-fields": "Campo(s) inválido(s)",
+      "project-manager-deleted": "O gestor de projeto com sessão iniciada já não existe",
+      "expired-session": "A sua sessão expirou",
+      "forbidden": "Não possui permissões"
+    },
+    "confirm": {
+      "project-delete": "Tem a certeza que deseja apagar este projeto?",
+      "task-delete": "Tem a certeza que deseja apagar a tarefa: ",
+      "project-manager-delete": "Tem a certeza que deseja apagar a sua conta? (Também irá apagar os projetos que gere e as suas tarefas)",
+      "developer-delete": "Tem a certeza que deseja apagar a sua conta? (Também irá apagar as tarefas que lhe estão associadas)"
+    }
+  }
+} 

@@ -1,0 +1,15 @@
+<ngx-spinner size="medium" type="ball-beat"></ngx-spinner>
+<body class="d-flex flex-column min-vh-100">
+  <app-nav-menu></app-nav-menu>
+  <div class="container">
+    <app-alert></app-alert>
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="text-center text-white mt-auto">
+    <div class="text-center text-dark p-2">
+      {{"app.project" | translate}} | Diogo Filipe |
+      <a class="text-dark" href="https://github.com/ipnlis/Pgp_Diogo_Filipe">{{"app.github" | translate}}</a>
+    </div>
+  </footer>
+</body>

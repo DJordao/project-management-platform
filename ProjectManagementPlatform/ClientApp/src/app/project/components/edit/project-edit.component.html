@@ -1,0 +1,65 @@
+ <div>
+      <form (ngSubmit)="updateProject()" [formGroup]="projectForm">
+        <div class="form-group">
+          <label class="col-form-label" for="name">{{'form.name' | translate}}</label>
+          <div>
+            <input type="text" class="form-control" id="name" formControlName="name" maxlength="128"
+                   (keyup)="checkNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidName }" />
+            <span class="invalid-feedback">
+              <span *ngIf="errorNameRequired">
+                {{'validation.required.name' | translate}}
+              </span>
+              <span *ngIf="errorNameMinLength">
+                {{'validation.min-length.name' | translate}} {{'validation.min-length.characters' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="projectManagerUserName">{{'form.project-manager' | translate}}</label>
+          <div>
+            <select class="form-select form-control" id="projectManagerUserName" formControlName="projectManagerUserName">
+              <option *ngFor="let pm of projectManagers" [ngValue]="pm.userName">{{ pm.userName }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="budget">{{'form.budget' | translate}}</label>
+          <div>
+            <input type="number" class="form-control" id="budget" formControlName="budget" min="0"
+                   (keyup)="checkBudgetErrors()" (change)="checkBudgetErrors()"
+                   [ngClass]="{'is-invalid': isInvalidBudget }" />
+            <span class="invalid-feedback">
+              <span *ngIf="errorBudgetRequired">
+                {{'validation.required.budget' | translate}}
+              </span>
+              <span *ngIf="errorBudgetMin">
+                {{'validation.budget-min' | translate}}
+              </span>
+              <span *ngIf="errorBudgetMax">
+                {{'validation.budget-max' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="description">{{'form.description' | translate}}</label>
+          <div>
+            <textarea class="form-control" id="description" rows="3" formControlName="description" maxlength="512"></textarea>
+          </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+          <div>
+            <button type="submit" class="btn btn-primary mr-3 col-md-3" data-bs-toggle="modal" data-bs-target="#editProjectModal"
+                    [disabled]="projectForm.invalid || formUnchanged()">
+              <fa-icon [icon]="faSave"></fa-icon> {{'button.save' | translate}}</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editProjectModal"
+                    (click)="reset()">
+            <fa-icon [icon]="faBan"></fa-icon>
+            {{'button.cancel' | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </div>

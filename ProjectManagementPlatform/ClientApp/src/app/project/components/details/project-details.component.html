@@ -1,0 +1,183 @@
+<div>
+  <div class="card col-lg-12 mb-4">
+    <div class="card-body" *ngIf="project">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4 class="card-title mb-2">{{project.name}}</h4>
+        </div>
+      </div>
+      <div class="card-text mb-2 col-lg-12" *ngIf="project.description">{{project.description}}</div>
+      <div class="text-muted card-text mb-2 col-lg-12" *ngIf="!project.description || project.description == ''">{{'no-description' | translate}}...</div>
+      <hr />
+      <div class="row">
+        <div class="col-lg-2">
+          <p class="mb-2">{{'projects.manager' | translate}}:</p>
+        </div>
+        <div class="col-lg-6">
+          <p class="mb-2 text-muted">{{project.projectManagerUserName}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2">
+          <p class="mb-2">{{'form.budget' | translate}}:</p>
+        </div>
+        <div class="col-lg-6">
+          <p class="mb-2 text-muted">{{project.budget | currency}}</p>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <button class="btn btn-primary btn-grp" data-bs-toggle="modal" data-bs-target="#editProjectModal">
+          <fa-icon [icon]="faEdit"></fa-icon>
+          {{'projects.edit' | translate}}
+        </button>
+        <button (click)="confirmDelete(project.id, null)" class="btn btn-danger btn-grp">
+          <fa-icon [icon]="faTrash"></fa-icon> {{'projects.delete' | translate}}
+        </button>
+        <button [routerLink]="'..'" class="btn btn-secondary btn-grp">
+          <fa-icon [icon]="faArrowLeft"></fa-icon>
+          {{'button.back' | translate}}
+        </button>
+      </div>
+      <hr />
+      <div class="overflow-auto">
+        
+        <table class="table caption-top">
+          <caption class="active">
+            <div class="row col-md-12">
+              <div class="col-md-6">
+                <p id="caption">{{'projects.tasks' | translate}}</p>
+              </div>
+              <div class="offset-md-2 col-md-4">
+                <form (ngSubmit)="search()" [formGroup]="searchForm">
+                  <div class="row">
+                    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">{{'tasks.search' | translate}}:</label>
+                    <div class="col-xs-3 col-sm-auto">
+                      <input id="table-filtering-search" class="form-control" type="text" formControlName="filter">
+                    </div>
+                    <div class="col-lg-1">
+                      <button type="submit" class="btn btn-secondary"><fa-icon [icon]="faSearch"></fa-icon></button>
+                    </div>
+                    <div class="col-lg-1 paddingLeft" *ngIf="project.tasks && tasks.length != project.tasks.length">
+                      <button type="reset" class="btn btn-light" (click)="tasks = project.tasks">
+                        <fa-icon [icon]="faEraser"></fa-icon>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            
+          </caption>
+          <thead>
+            <tr>
+              <th class="col-lg-2 align-middle" scope="col" (click)="sort('name')">
+                {{'form.name' | translate}}
+                <fa-icon [icon]="sortType['name'] == undefined ? faSort : (sortType['name'] ?
+                         faSortDown : faSortUp)"></fa-icon>
+              </th>
+              <th class="col-lg-2 align-middle" scope="col" (click)="sort('developerUserName')">
+                {{'form.guardian' | translate}}
+                <fa-icon [icon]="sortType['developerUserName'] == undefined ? faSort : (sortType['developerUserName'] ?
+                         faSortDown : faSortUp)"></fa-icon>
+              </th>
+              <th class="col-lg-1 align-middle" scope="col" (click)="sort('state')">
+                {{'tasks.state' | translate}}
+                <fa-icon [icon]="sortType['state'] == undefined ? faSort : (sortType['state'] ?
+                         faSortDown : faSortUp)"></fa-icon>
+              </th>
+              <th class="col-lg-1 align-middle" scope="col" (click)="sort('deadline')">
+                {{'form.deadline' | translate}}
+                <fa-icon [icon]="sortType['deadline'] == undefined ? faSort : (sortType['deadline'] ?
+                         faSortDown : faSortUp)"></fa-icon>
+              </th>
+              <th class="col-lg-6 align-middle" scope="col" (click)="sort('description')">
+                {{'form.description' | translate}}
+                <fa-icon [icon]="sortType['description'] == undefined ? faSort : (sortType['description'] ?
+                         faSortDown : faSortUp)"></fa-icon>
+              </th>
+              <th class="col-lg-1 align-middle" scope="col">
+                <button type="button" class="btn btn-success align-middle" data-bs-toggle="modal" data-bs-target="#addTaskModal"
+                        data-toggle="tooltip" data-placement="top" title="{{'tasks.add' | translate}}">
+                  <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="taskItem" *ngFor="let task of tasks | slice: (page-1) * pageSize: (page-1) * pageSize + pageSize">
+              <td class="col-lg-2 align-middle text-justify">{{task.name}}</td>
+              <td class="col-lg-2 align-middle">{{task.developerUserName}}</td>
+              <td class="col-lg-1 align-middle done" *ngIf="task.state">
+                {{'tasks.done' | translate}}
+              </td>
+              <td class="col-lg-1 align-middle ongoing" *ngIf="!task.state">
+                {{'tasks.ongoing' | translate}}
+              </td>
+              <td class="col-lg-1 align-middle">{{task.deadline | date}}</td>
+              <td class="col-lg-6 align-middle text-justify">{{task.description}}</td>
+              <td class="col-lg-1 align-middle">
+                <button type="button" class="btn btn-primary btn-tbl" data-bs-toggle="modal" data-bs-target="#editTaskModal"
+                        data-toggle="tooltip" data-placement="top" (click)="selectTask(task)" title="{{'tasks.edit' | translate}}">
+                  <fa-icon [icon]="faPenSquare"></fa-icon>
+                </button>
+                <button type="button" class="btn btn-danger btn-tbl"
+                        data-toggle="tooltip" data-placement="top" title="{{'tasks.delete' | translate}}"
+                        (click)="confirmDelete(project.id, task)">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <caption *ngIf="project.tasks && project.tasks.length != 0 && tasks.length == 0" class="text-muted col-lg-12 align-middle text-justify captionSide">
+            {{'tasks.no-matches' | translate}}
+          </caption>
+          <caption *ngIf="project.tasks && project.tasks.length == 0" class="text-muted col-lg-12 align-middle text-justify captionSide">
+            {{'projects.no-tasks' | translate}}
+          </caption>
+        </table>
+        <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="tasks.length"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editProjectModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editProjectModal">{{'projects.edit' | translate}}</h4>
+      </div>
+      <div class="modal-body">
+        <app-project-edit [(project)]="project"></app-project-edit>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editTaskModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editProjectModal">{{'tasks.edit' | translate}}</h4>
+      </div>
+      <div class="modal-body">
+        <app-task-edit [(project)]="project" [task]="task"></app-task-edit>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addTaskModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="editProjectModal">{{'tasks.add' | translate}}</h4>
+      </div>
+      <div class="modal-body">
+        <app-task-add [(project)]="project"></app-task-add>
+      </div>
+    </div>
+  </div>
+</div>

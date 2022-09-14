@@ -1,0 +1,12 @@
+<div *ngIf="alertService.errors.length">
+  <div class="alert alert-danger alert-dismissible" role="alert"
+       *ngFor='let error of alertService.errors' (click)="clear()">
+    {{error}}
+  </div>
+</div>
+<div *ngIf="alertService.messages.length">
+  <div class="alert alert-success alert-dismissible" role="alert"
+       *ngFor='let message of alertService.messages' (click)="clear()">
+    {{message}}
+  </div>
+</div>

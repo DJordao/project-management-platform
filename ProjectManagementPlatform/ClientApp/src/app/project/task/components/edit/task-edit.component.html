@@ -1,0 +1,67 @@
+<div>
+      <form (ngSubmit)="updateTask()" [formGroup]="taskForm">
+        <div class="form-group">
+          <label class="col-form-label" for="name">{{'form.name' | translate}}</label>
+          <div>
+            <input type="text" class="form-control" id="name" formControlName="name" maxlength="128"
+                   (keyup)="checkNameErrors()"
+                   [ngClass]="{'is-invalid': isInvalidName }" />
+            <span class="invalid-feedback">
+              <span *ngIf="errorNameRequired">
+                {{'validation.required.task-name' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="description">{{'form.description' | translate}}</label>
+          <div>
+            <textarea class="form-control" id="description" rows="3" formControlName="description" maxlength="512"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="developerUserName">{{'form.guardian' | translate}}</label>
+          <div>
+            <select class="form-select form-control" id="developerUserName" formControlName="developerUserName"
+                    (change)="checkDeveloperErrors()"
+                   [ngClass]="{'is-invalid': isInvalidDeveloper }">
+              <option *ngFor="let d of developers" [ngValue]="d.userName">{{ d.userName }}</option>
+            </select>
+            <span class="invalid-feedback">
+              <span *ngIf="errorDeveloperRequired">
+                {{'validation.required.guardian' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="deadline">{{'form.deadline' | translate}}</label>
+          <div>
+            <input type="date" class="form-control" id="deadline" formControlName="deadline"
+                   (change)="checkDeadlineErrors()"
+                   [ngClass]="{'is-invalid': isInvalidDeadline }" />
+            <span class="invalid-feedback">
+              <span *ngIf="errorDeadlineRequired">
+                {{'validation.required.deadline' | translate}}
+              </span>
+              <span *ngIf="errorDeadlineFutureDate">
+                {{'validation.deadline' | translate}}
+              </span>
+            </span>
+          </div>
+        </div>
+        <hr />
+        <div class="form-group">
+          <div>
+            <button type="submit" class="btn btn-primary mr-3 col-md-3" data-bs-toggle="modal" data-bs-target="#editTaskModal"
+                    [disabled]="taskForm.invalid || formUnchanged()">
+              <fa-icon [icon]="faSave"></fa-icon> {{'button.save' | translate}}
+            </button>
+            <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#editTaskModal"
+                    (click)="reset()">
+            <fa-icon [icon]="faBan"></fa-icon>
+            {{'button.cancel' | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
